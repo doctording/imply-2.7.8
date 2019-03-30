@@ -1,0 +1,60 @@
+[Unit]
+Description=imply-quickstart
+Documentation=https://imply.io
+Wants=network-online.target
+After=network-online.target
+ 
+[Service]
+Environment=IMPLY_HOME=/usr/local/imply-2.7.8
+Environment=CONF_DIR=/usr/local/imply-2.7.8/conf
+Environment=VAR_DIR=/usr/local/imply-2.7.8/var
+#EnvironmentFile=-/etc/sysconfig/imply
+ 
+WorkingDirectory=/usr/local/imply-2.7.8
+
+#User=imply
+#Group=imply
+ 
+#ExecStartPre=
+ 
+#ExecStart=/usr/local/imply-2.7.8/bin/supervise -c conf/supervise/broker.conf
+ExecStart=/usr/local/imply-2.7.8/bin/supervise -c conf/supervise/quickstart.conf
+ 
+# StandardOutput is configured to redirect to journalctl since
+# some error messages may be logged in standard output before
+# imply logging system is initialized. Imply-historical
+# stores its logs in /var/log/imply and does not use
+# journalctl by default. If you also want to enable journalctl
+# logging, you can simply remove the "quiet" option from ExecStart.
+StandardOutput=journal
+StandardError=inherit
+ 
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=655350
+ 
+# Specifies the maximum number of processes
+LimitNPROC=655350
+ 
+# Specifies the maximum size of virtual memory
+LimitMEMLOCK=infinity
+ 
+# Specifies the maximum file size
+LimitFSIZE=infinity
+ 
+# Disable timeout logic and wait until process is stopped
+TimeoutStopSec=0
+ 
+# SIGTERM signal is used to stop the Java process
+KillSignal=SIGTERM
+ 
+# Send the signal only to the JVM rather than its control group
+KillMode=process
+ 
+# Java process is never killed
+SendSIGKILL=no
+ 
+# When a JVM receives a SIGTERM signal it exits with code 143
+SuccessExitStatus=143
+ 
+[Install]
+WantedBy=multi-user.target
