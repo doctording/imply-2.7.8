@@ -16,9 +16,11 @@ bin/supervise -c conf/supervise/quickstart.conf
 * node
 * git lfs
 
+<small>注: imgs和service文件夹不是原始`imply-2.7.8`文件夹下的，其余是包括了大于100M的文件，所以用了`git lfs`</small>
+
 ## 单机部署
 
-服务启动采用`systemctl`, 见本项目`service`文件夹
+服务启动可以采用`systemctl`, 见本项目`service`文件夹，文件放到主机到`/etc/systemd/system/`目录下
 
 ```bash
 git clone https://github.com/doctording/imply-2.7.8
@@ -33,7 +35,7 @@ git lfs pull
 ### 新增broker节点, 同理其它
 
 ```bash
-# 172.16.227.129
+# 172.16.227.243 sync to  172.16.227.129
 rsync -avz imply-2.7.8/ root@172.16.227.129:/usr/local/imply-2.7.8/
 ```
 
