@@ -32,7 +32,7 @@ git lfs pull
 
 ## 多机部署
 
-### 新增broker节点, 同理其它
+### 新增broker节点, 其它节点(middleManager,historical,coordinator/ovelord)同理
 
 ```bash
 # 172.16.227.243 sync to  172.16.227.129
