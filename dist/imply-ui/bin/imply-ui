@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Just call ../imply-ui, this is only here for back compat
+
+PWD="$(pwd)"
+WHEREAMI="$(dirname "$0")"
+WHEREAMI="$(cd "$WHEREAMI" && pwd)"
+
+exec "$WHEREAMI"/../imply-ui "$@"
