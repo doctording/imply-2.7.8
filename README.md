@@ -52,7 +52,7 @@ bin/supervise -c conf/supervise/broker.conf
 ```
 
 ifconfig | hostname
-- | -
+-|-
 172.16.227.243 | v1
 172.16.227.129 | v2
 
